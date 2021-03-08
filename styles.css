@@ -72,7 +72,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transform: scale(2);
+    transform: scale(1.5);
 }
 
 #textBox {
