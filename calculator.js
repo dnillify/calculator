@@ -41,6 +41,7 @@ function divide (a, b) {
 
 function addListeners() {
     buttonZero.addEventListener("click", function () { updateDisplayValue("0")});
+    buttonZero.addEventListener("touchstart", function () { updateDisplayValue("0")});
 }
 
 function updateDisplayValue(input) {
