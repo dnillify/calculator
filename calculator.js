@@ -40,8 +40,13 @@ function divide (a, b) {
 }
 
 function addListeners() {
-    buttonZero.addEventListener("click", function () { updateDisplayValue("0")});
-    buttonZero.addEventListener("touchstart", function () { updateDisplayValue("0")});
+    if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        buttonZero.addEventListener("touchstart", function () { updateDisplayValue("0")});
+    }
+    else {
+        buttonZero.addEventListener("click", function () { updateDisplayValue("0")});
+    }
+    
 }
 
 function updateDisplayValue(input) {
