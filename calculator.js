@@ -47,7 +47,7 @@ function divide (a, b) {
 
 function addListeners() {
     if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        buttonZero.addEventListener("touchstart", function () { updateDisplayValue("0")});
+        buttonZero.addEventListener("touchstart", function (event) { updateDisplayValue("0"); event.preventDefault(); });
         buttonOne.addEventListener("touchstart", function () { updateDisplayValue("1")});
         buttonTwo.addEventListener("touchstart", function () { updateDisplayValue("2")});
         buttonThree.addEventListener("touchstart", function () { updateDisplayValue("3")});
