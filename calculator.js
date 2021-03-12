@@ -48,21 +48,21 @@ function divide (a, b) {
 function addListeners() {
     if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         buttonZero.addEventListener("touchstart", function (event) { updateDisplayValue("0"); event.preventDefault(); });
-        buttonOne.addEventListener("touchstart", function () { updateDisplayValue("1")});
-        buttonTwo.addEventListener("touchstart", function () { updateDisplayValue("2")});
-        buttonThree.addEventListener("touchstart", function () { updateDisplayValue("3")});
-        buttonFour.addEventListener("touchstart", function () { updateDisplayValue("4")});
-        buttonFive.addEventListener("touchstart", function () { updateDisplayValue("5")});
-        buttonSix.addEventListener("touchstart", function () { updateDisplayValue("6")});
-        buttonSeven.addEventListener("touchstart", function () { updateDisplayValue("7")});
-        buttonEight.addEventListener("touchstart", function () { updateDisplayValue("8")});
-        buttonNine.addEventListener("touchstart", function () { updateDisplayValue("9")});
-        buttonAdd.addEventListener("touchstart", function () { operatorInputHandler("add")});
-        buttonSubtract.addEventListener("touchstart", function () { operatorInputHandler("subtract")});
-        buttonMultiply.addEventListener("touchstart", function () { operatorInputHandler("multiply")});
-        buttonDivide.addEventListener("touchstart", function () { operatorInputHandler("divide")});
-        buttonEquals.addEventListener("touchstart", operate);
-        buttonClear.addEventListener("touchstart", clear);
+        buttonOne.addEventListener("touchstart", function (event) { updateDisplayValue("1"); event.preventDefault(); });
+        buttonTwo.addEventListener("touchstart", function (event) { updateDisplayValue("2"); event.preventDefault(); });
+        buttonThree.addEventListener("touchstart", function (event) { updateDisplayValue("3"); event.preventDefault(); });
+        buttonFour.addEventListener("touchstart", function (event) { updateDisplayValue("4"); event.preventDefault(); });
+        buttonFive.addEventListener("touchstart", function (event) { updateDisplayValue("5"); event.preventDefault(); });
+        buttonSix.addEventListener("touchstart", function (event) { updateDisplayValue("6"); event.preventDefault(); });
+        buttonSeven.addEventListener("touchstart", function (event) { updateDisplayValue("7"); event.preventDefault(); });
+        buttonEight.addEventListener("touchstart", function (event) { updateDisplayValue("8"); event.preventDefault(); });
+        buttonNine.addEventListener("touchstart", function (event) { updateDisplayValue("9"); event.preventDefault(); });
+        buttonAdd.addEventListener("touchstart", function (event) { operatorInputHandler("add"); event.preventDefault(); });
+        buttonSubtract.addEventListener("touchstart", function (event) { operatorInputHandler("subtract"); event.preventDefault(); });
+        buttonMultiply.addEventListener("touchstart", function (event) { operatorInputHandler("multiply"); event.preventDefault(); });
+        buttonDivide.addEventListener("touchstart", function (event) { operatorInputHandler("divide"); event.preventDefault(); });
+        buttonEquals.addEventListener("touchstart", function(event) { operate(); event.preventDefault(); });
+        buttonClear.addEventListener("touchstart", function(event) { clear(); event.preventDefault(); });
         
     }
     else {
