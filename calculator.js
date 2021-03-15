@@ -18,6 +18,7 @@ const buttonMultiply = document.getElementById("buttonMultiply");
 const buttonDivide = document.getElementById("buttonDivide");
 const buttonEquals = document.getElementById("buttonEquals");
 const buttonDecimal = document.getElementById("buttonDecimal");
+const buttonSign = document.getElementById("buttonSign");
 
 // Global Variables
 let display = '';
@@ -61,8 +62,11 @@ function addListeners() {
         buttonSubtract.addEventListener("touchstart", function (event) { operatorInputHandler("subtract"); event.preventDefault(); });
         buttonMultiply.addEventListener("touchstart", function (event) { operatorInputHandler("multiply"); event.preventDefault(); });
         buttonDivide.addEventListener("touchstart", function (event) { operatorInputHandler("divide"); event.preventDefault(); });
+        buttonDecimal.addEventListener("touchstart", function (event) { updateDisplayValue("."); event.preventDefault(); });
         buttonEquals.addEventListener("touchstart", function(event) { operate(); event.preventDefault(); });
         buttonClear.addEventListener("touchstart", function(event) { clear(); event.preventDefault(); });
+        buttonSign.addEventListener("touchstart", function(event) { sign(); event.preventDefault(); });
+        buttonDelete.addEventListener("touchstart", function(event) { backspace(); event.preventDefault(); });
         
     }
     else {
@@ -80,8 +84,11 @@ function addListeners() {
         buttonSubtract.addEventListener("click", function () { operatorInputHandler("subtract")});
         buttonMultiply.addEventListener("click", function () { operatorInputHandler("multiply")});
         buttonDivide.addEventListener("click", function () { operatorInputHandler("divide")});
+        buttonDecimal.addEventListener("click", function () { updateDisplayValue(".")});
         buttonEquals.addEventListener("click", operate);
         buttonClear.addEventListener("click", clear);
+        buttonSign.addEventListener("click", sign);
+        buttonDelete.addEventListener("click", backspace);
     }
     
 }
@@ -92,6 +99,11 @@ function updateDisplayValue(input) {
         clearDisplayFlag = false;
     }
 
+    if (input === ".") {
+        if (display.includes(".")) {
+            return;
+        }
+    }
     if (display.length < 12 - input.length) {
         display += input;
         displayValue = parseFloat(display);
@@ -99,6 +111,21 @@ function updateDisplayValue(input) {
     }
 }
 
+function sign() {
+    if (display.includes("-")) {
+        display = display.substr(1);
+        displayValue = parseFloat(display);
+        textBox.innerHTML = display;
+    }
+
+    else if (display.length < 11) {
+        display = "-".concat(display);
+        displayValue = parseFloat(display);
+        textBox.innerHTML = display;
+    }
+
+
+}
 function operate() {
     operandB = displayValue;
     let answer = 0;
@@ -161,4 +188,12 @@ function clear() {
     operator = '';
     clearDisplayFlag = true;
     updateDisplayValue('');
+}
+
+function backspace() {
+    if (display.length > 0) {
+        display = display.slice(0, display.length - 1);
+        displayValue = parseFloat(display);
+        textBox.innerHTML = display;
+    }
 }
