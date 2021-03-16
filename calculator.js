@@ -25,8 +25,9 @@ let display = '';
 let displayValue = 0;
 let clearDisplayFlag = false;
 let operator = '';
-let operandA = 0;
-let operandB = 0;
+let operandA;
+let operandB;
+let shouldOperate = false;
 
 addListeners();
 
@@ -171,20 +172,25 @@ function operate() {
         }
     }
 
-
+    shouldOperate = false;
     clearDisplayFlag = true;
     updateDisplayValue(answer.toString());
 }
 
 function operatorInputHandler(input) {
+    if (operator != null && operandA != null && shouldOperate) {
+        operate();
+    }
+
+    shouldOperate = true;
     operator = input;
     operandA = displayValue;
     clearDisplayFlag = true;
 }
 
 function clear() {
-    operandA = 0;
-    operandB = 0;
+    operandA = null;
+    operandB = null;
     operator = '';
     clearDisplayFlag = true;
     updateDisplayValue('');
